@@ -1,73 +1,138 @@
 version=1
 id=3828709874
 title=Randomize Traits with Conditions
-description=[h1]Information[/h1]
-description=This mod enhances the 'Random' button in the character selection screen of Project Zomboid. Its main features are as follows:
-description=[list]
-description=[]You can pre-determine traits to be completely excluded from the selection pool of existing traits.
-description=[]You can pre-determine traits you always want included in the result from existing traits.
-description=[/list]
-description=This mod can be utilized in various ways through three checkboxes and a setting for each trait in the game options.
-description=[list]
-description=[][b]Build 41:[/b] Open 'Options' and go to the 'Mods' tab (provided by the ModOptions mod).
-description=[][b]Build 42:[/b] Open 'Options', go to the 'MODS' tab, and select 'Randomize Traits with Conditions'.
-description=[/list]
-description=Below the three checkboxes, every trait has its own setting: Normal, Exclude, or Preselect. In Build 42, the traits are grouped into 'Positive Traits' and 'Negative Traits' and sorted by name.
-description=
-description=The first checkbox, [b]'Enable Preselect/Exclude'[/b], is checked by default. It allows you to choose which traits to include or exclude from the random process using the Exclude, Normal, and Preselect options (Normal: Include, Exclude: Exclude). When the Preselect option is used, it ensures that trait is always included in the resulting character.
-description=
-description=The second checkbox, [b]'Always Include Preselected Traits'[/b], asks whether to activate the Preselect option. This option ensures that the preselected traits are always included in the final result. If this option is unchecked, the randomisation algorithm will endeavour to include the preselected traits as much as possible; however, some of the preselected traits may often be omitted from the final result. It functions correctly only if the first checkbox is checked beforehand. If you do not wish to use Preselect, you can uncheck this box.
-description=
-description=The third checkbox, [b]'Auto Re-Randomize on Profession Change'[/b], ensures that if you change a profession during character selection, existing traits would be incompatible with the new profession. So this checkbox option will cause the originally selected traits to be randomly changed again automatically with the profession change. It is checked by default, and it is recommended to leave it as checked.
-description=
-description=Build 41 and Build 42 save their settings separately. Settings you made in Build 41 will not carry over to Build 42, so you need to set them again.
-description=
-description=In Build 42, if two traits share the same name, the source of the trait is shown after its name in the settings (e.g., 'Tinkerer (toadtraits)' for the More Traits Definitive Edition mod).
-description=
-description=In Build 42, profession-only traits are not listed in the settings, since they cannot be chosen on the character creation screen.
-description=
-description=[h2]Special notes[/h2]
-description=If you Preselect two traits that cannot be held together, only positive traits will ever be selected (e.g., 'Brave' and 'Cowardly'). Please also note that if both traits are positive but incompatible ('Strong' and 'Stout') or both are negative but incompatible ('Unfit' and 'Out of Shape'), only one will be automatically selected based on their order in the trait array.
-description=
-description=Traits that cannot be possessed by the randomly determined profession will not be selected, even if they are Preselected.
-description=
-description=[h1]Known Issues[/h1]
-description=Nothing yet.
-description=
-description=[h1]Mod Compatibility[/h1]
-description=[h2]Version[/h2]
-description=Build 41, Build 42 (42.13.0+)
-description=
-description=[h2]Required mods[/h2]
-description=[list]
-description=[]ModOptions (Build 41)
-description=[/list]
-description=[h2]Compatible mods[/h2]
-description=It is implemented to be compatible with most mods that add traits. The list below only includes mods that have been verified, however.
-description=[list]
-description=[]More Traits (Build 41)
-description=[*]More Traits Definitive Edition (Build 42)
-description=[/list]
-description=[h1]Opening the project code to the community[/h1]
-description=The Mod is available on GitHub for others to contribute.
-description=
-description=[url=https://github.com/PajaritoMoyqi/MOD_Public-Project_Zomboid-Randomize_Traits_with_Conditions]https://github.com/PajaritoMoyqi/MOD_Public-Project_Zomboid-Randomize_Traits_with_Conditions[/url]
-description=
-description=At github link, you will find each version of the mod as I continue to build.
-description=
-description=Regular updates will be posted to the Steam Workshop when appropriate.
-description=
-description=[h1]Authors[/h1]
-description=[h2]Creators[/h2]
-description=PajaritoMoyqi - main mod
-description=
-description=[h2]Translations[/h2]
-description=English: PajaritoMoyqi
-description=Korean: PajaritoMoyqi
-description=Spanish(ES): PajaritoMoyqi
-description=Spanish(AR): PajaritoMoyqi
+description=[h1]Information[/h1]
+
+description=This mod enhances the 'Random' button in the character selection screen of Project Zomboid. Its main features are as follows:
+
+description=[list]
+
+description=[]You can pre-determine traits to be completely excluded from the selection pool of existing traits.
+
+description=[]You can pre-determine traits you always want included in the result from existing traits.
+
+description=[/list]
+
+description=This mod can be utilized in various ways through three checkboxes and a setting for each trait in the game options.
+
+description=[list]
+
+description=[][b]Build 41:[/b] Open 'Options' and go to the 'Mods' tab (provided by the ModOptions mod).
+
+description=[][b]Build 42:[/b] Open 'Options', go to the 'MODS' tab, and select 'Randomize Traits with Conditions'.
+
+description=[/list]
+
+description=Below the three checkboxes, every trait has its own setting: Normal, Exclude, or Preselect. In Build 42, the traits are grouped into 'Positive Traits' and 'Negative Traits' and sorted by name.
+
+description=
+
+description=The first checkbox, [b]'Enable Preselect/Exclude'[/b], is checked by default. It allows you to choose which traits to include or exclude from the random process using the Exclude, Normal, and Preselect options (Normal: Include, Exclude: Exclude). When the Preselect option is used, it ensures that trait is always included in the resulting character.
+
+description=
+
+description=The second checkbox, [b]'Always Include Preselected Traits'[/b], asks whether to activate the Preselect option. This option ensures that the preselected traits are always included in the final result. If this option is unchecked, the randomisation algorithm will endeavour to include the preselected traits as much as possible; however, some of the preselected traits may often be omitted from the final result. It functions correctly only if the first checkbox is checked beforehand. If you do not wish to use Preselect, you can uncheck this box.
+
+description=
+
+description=The third checkbox, [b]'Auto Re-Randomize on Profession Change'[/b], ensures that if you change a profession during character selection, existing traits would be incompatible with the new profession. So this checkbox option will cause the originally selected traits to be randomly changed again automatically with the profession change. It is checked by default, and it is recommended to leave it as checked.
+
+description=
+
+description=Build 41 and Build 42 save their settings separately. Settings you made in Build 41 will not carry over to Build 42, so you need to set them again.
+
+description=
+
+description=In Build 42, if two traits share the same name, the source of the trait is shown after its name in the settings (e.g., 'Tinkerer (toadtraits)' for the More Traits Definitive Edition mod).
+
+description=
+
+description=In Build 42, profession-only traits are not listed in the settings, since they cannot be chosen on the character creation screen.
+
+description=
+
+description=[h2]Special notes[/h2]
+
+description=If you Preselect two traits that cannot be held together, only positive traits will ever be selected (e.g., 'Brave' and 'Cowardly'). Please also note that if both traits are positive but incompatible ('Strong' and 'Stout') or both are negative but incompatible ('Unfit' and 'Out of Shape'), only one will be automatically selected based on their order in the trait array.
+
+description=
+
+description=Traits that cannot be possessed by the randomly determined profession will not be selected, even if they are Preselected.
+
+description=
+
+description=[h1]Known Issues[/h1]
+
+description=Nothing yet.
+
+description=
+
+description=[h1]Mod Compatibility[/h1]
+
+description=[h2]Version[/h2]
+
+description=Build 41, Build 42 (42.13.0+)
+
+description=
+
+description=[h2]Required mods[/h2]
+
+description=[list]
+
+description=[]ModOptions (Build 41)
+
+description=[/list]
+
+description=[h2]Compatible mods[/h2]
+
+description=It is implemented to be compatible with most mods that add traits. The list below only includes mods that have been verified, however.
+
+description=[list]
+
+description=[]More Traits (Build 41)
+
+description=[*]More Traits Definitive Edition (Build 42)
+
+description=[/list]
+
+description=[h1]Opening the project code to the community[/h1]
+
+description=The Mod is available on GitHub for others to contribute.
+
+description=
+
+description=[url=https://github.com/PajaritoMoyqi/MOD_Public-Project_Zomboid-Randomize_Traits_with_Conditions]https://github.com/PajaritoMoyqi/MOD_Public-Project_Zomboid-Randomize_Traits_with_Conditions[/url]
+
+description=
+
+description=At github link, you will find each version of the mod as I continue to build.
+
+description=
+
+description=Regular updates will be posted to the Steam Workshop when appropriate.
+
+description=
+
+description=[h1]Authors[/h1]
+
+description=[h2]Creators[/h2]
+
+description=PajaritoMoyqi - main mod
+
+description=
+
+description=[h2]Translations[/h2]
+
+description=English: PajaritoMoyqi
+
+description=Korean: PajaritoMoyqi
+
+description=Spanish(ES): PajaritoMoyqi
+
+description=Spanish(AR): PajaritoMoyqi
+
 description=Japanese: PajaritoMoyqi
 description=
 description=Korean, Spanish and Japanese descriptions are available on [url=https://github.com/PajaritoMoyqi/MOD_Public-Project_Zomboid-Randomize_Traits_with_Conditions]GitHub[/url].
 tags=Build 41;Build 42;Traits
-visibility=private
+visibility=public
