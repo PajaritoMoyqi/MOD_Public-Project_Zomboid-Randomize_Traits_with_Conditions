@@ -77,7 +77,7 @@ Japanese: PajaritoMoyqi<br>
 
 ## ID
 
-Workshop ID: <br>
+Workshop ID: 3828709874<br>
 Mod ID: PM_RandomizeTraitsWithConditions<br>
 
 
@@ -96,11 +96,11 @@ Mod ID: PM_RandomizeTraitsWithConditions<br>
 
 세 개의 체크박스 아래에는 각 특성마다 'normal', 'exclude', 'preselect'이라는 별도의 설정이 있습니다. 빌드 42에서는 특성이 '긍정적 특성'과 '부정적 특성'으로 분류되어 이름 순으로 정렬되어 있습니다.
 
-첫 번째 체크박스 'Preselect, Excldue 활성화'는 기본적으로 체크되어 있으며, Exclude, Normal, Preselect 옵션을 사용하여 랜덤 과정에 어떤 특성을 포함하고 제외할지를 고를 수 있으며(Normal: 포함, Exclude: 제외), Preselect 옵션을 사용하게 되면 랜덤의 결과로 나온 캐릭터에 항상 그 특성이 포함되도록 합니다.
+첫 번째 체크박스 'Preselect, Exclude 활성화'는 기본적으로 체크되어 있으며, Exclude, Normal, Preselect 옵션을 사용하여 랜덤 과정에 어떤 특성을 포함하고 제외할지를 고를 수 있으며(Normal: 포함, Exclude: 제외), Preselect 옵션을 사용하게 되면 랜덤의 결과로 나온 캐릭터에 항상 그 특성이 포함되도록 합니다.
 
-두 번째 체크박스 '무조건 결과에 포함될 특성 고르기'는 Preselect 옵션을 활성화할 것인지를 묻는 것입니다. 이 옵션을 켜면 Preselect한 특성이 무조건 결과에 포함됩니다. 만일 이 옵션의 체크박스를 헤제하면 랜덤 알고리즘은 preselect된 특성을 먼저 결과값에 넣기 위해 노력하겠지만, 종종 최종 결과에서 preselect된 특성 몇 가지가 빠지는 경우가 생기게 됩니다. 이 옵션은 첫 번째 체크박스가 선행적으로 체크되어어 있어야만 정상 동작하며, 만일 Preselect는 사용하고 싶지 않다면 이 체크박스를 해제하여도 됩니다.
+두 번째 체크박스 '무조건 결과에 포함될 특성 고르기'는 Preselect 옵션을 활성화할 것인지를 묻는 것입니다. 이 옵션을 켜면 Preselect한 특성이 무조건 결과에 포함됩니다. 만일 이 옵션의 체크박스를 해제하면 랜덤 알고리즘은 preselect된 특성을 먼저 결과값에 넣기 위해 노력하겠지만, 종종 최종 결과에서 preselect된 특성 몇 가지가 빠지는 경우가 생기게 됩니다. 이 옵션은 첫 번째 체크박스가 선행적으로 체크되어 있어야만 정상 동작하며, 만일 Preselect는 사용하고 싶지 않다면 이 체크박스를 해제하여도 됩니다.
 
-세 번째 체크박스 '직업 변경시 특성 자동 선택됨'을 체크해두면, 특성 선택 중 직업을 바꾸는 경우 해당 직업이 가질 수 없는 특성이 있을 수도 있기 때문에 원래 선택되었던 특성이 다시 랜덤하게 바뀌도록 합니다. 디폴트로 체크되어 있으며, 체크된 채로 두는 것을 권장합니다.
+세 번째 체크박스 '직업 변경시 특성 자동 재랜덤'을 체크해두면, 특성 선택 중 직업을 바꾸는 경우 해당 직업이 가질 수 없는 특성이 있을 수도 있기 때문에 원래 선택되었던 특성이 다시 랜덤하게 바뀌도록 합니다. 디폴트로 체크되어 있으며, 체크된 채로 두는 것을 권장합니다.
 
 빌드 41과 빌드 42는 설정을 별도로 저장합니다. 빌드 41에서 설정한 내용은 빌드 42에 연결되지 않으므로, 다시 설정해야 합니다.
 
@@ -161,7 +161,7 @@ PajaritoMoyqi - 메인 모드
 
 ## ID
 
-Workshop ID: <br>
+Workshop ID: 3828709874<br>
 Mod ID: PM_RandomizeTraitsWithConditions<br>
 
 
@@ -245,7 +245,7 @@ Japonés: PajaritoMoyqi<br>
 
 ## ID
 
-Workshop ID: <br>
+Workshop ID: 3828709874<br>
 Mod ID: PM_RandomizeTraitsWithConditions<br>
 
 
@@ -262,7 +262,7 @@ Mod ID: PM_RandomizeTraitsWithConditions<br>
 - ビルド41：「オプション」を開き、「MOD」タブに移動します（ModOptions MODによる機能）。
 - ビルド42：「オプション」を開き、「MODS」タブに移動して、「条件付きで特性をランダム化」を選択します。
 
-3つのチェックボックスの下には、各特性ごとに「normal」、「exclde」、「preselect」という設定があります。ビルド42では、特性は「ポジティブ特性」と「ネガティブ特性」に分類され、名前順に並べ替えられています。
+3つのチェックボックスの下には、各特性ごとに「normal」、「exclude」、「preselect」という設定があります。ビルド42では、特性は「ポジティブ特性」と「ネガティブ特性」に分類され、名前順に並べ替えられています。
 
 最初のチェックボックス「Preselect/Excludeを有効化」はデフォルトでチェックされており、Exclude、Normal、Preselectのオプションを使用してランダム過程にどの特性を包含・除外するかを選択できます（Normal：包含、Exclude：除外）。Preselectオプションを使用すると、ランダム結果として出たキャラクターに必ずその特性が含まれるようになります。
 
@@ -317,17 +317,17 @@ GitHubリンクにアクセスすると、各バージョンおよびビルド�
 
 ### コード作成者
 
-PajaritMoyqi　ー　メインMOD
+PajaritoMoyqi　ー　メインMOD
 
 ### 翻訳
 
-英語：PajaritMoyqi<br>
-韓国語：PajaritMoyqi<br>
-スペイン語(スペイン)：PajaritMoyqi<br>
-スペイン語(アルゼンチン)：PajaritMoyqi<br>
-日本語：PajaritMoyqi<br>
+英語：PajaritoMoyqi<br>
+韓国語：PajaritoMoyqi<br>
+スペイン語(スペイン)：PajaritoMoyqi<br>
+スペイン語(アルゼンチン)：PajaritoMoyqi<br>
+日本語：PajaritoMoyqi<br>
 
 ## ID
 
-Workshop ID: <br>
+Workshop ID: 3828709874<br>
 Mod ID: PM_RandomizeTraitsWithConditions<br>
