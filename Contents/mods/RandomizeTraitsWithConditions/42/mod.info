@@ -1,0 +1,6 @@
+name=Randomize Traits with Conditions
+id=PM_RandomizeTraitsWithConditions
+poster=poster.png
+description=Get random traits for character with pre-determined conditions.
+author=PajaritoMoyqi
+versionMin=42.13.0
