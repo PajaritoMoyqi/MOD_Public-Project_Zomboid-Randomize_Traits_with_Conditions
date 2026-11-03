@@ -21,6 +21,59 @@ end
 -- Combobox index -> setting value
 local SETTING_VALUES = { "Normal", "Exclude", "Preselect" }
 
+-- Presets are stored in Zomboid/Lua/ (same folder as ModOptions.ini), one line each:
+--   name|<slot>|<preset name>
+--   trait|<slot>|<trait ID>|<Exclude or Preselect>
+PM_PRESET_SLOTS = 5
+local PRESET_FILE = "PM_RandomizeTraits_Presets.txt"
+
+-- Returns { [slot] = { name = string, traits = { [traitID] = setting } } }, empty slots are nil
+function PM_loadPresets()
+    local presets = {}
+    local reader = getFileReader(PRESET_FILE, true)
+    if not reader then
+        return presets
+    end
+    local line = reader:readLine()
+    while line do
+        local kind, slot, rest = line:match("^(%a+)|(%d+)|(.*)$")
+        slot = tonumber(slot)
+        if slot and slot >= 1 and slot <= PM_PRESET_SLOTS then
+            if kind == "name" then
+                presets[slot] = presets[slot] or { traits = {} }
+                presets[slot].name = rest
+            elseif kind == "trait" then
+                local traitID, setting = rest:match("^(.*)|(%a+)$")
+                if traitID and (setting == "Exclude" or setting == "Preselect") then
+                    presets[slot] = presets[slot] or { traits = {} }
+                    presets[slot].traits[traitID] = setting
+                end
+            end
+        end
+        line = reader:readLine()
+    end
+    reader:close()
+    -- A slot without a name line is broken; give it a default name
+    for slot, preset in pairs(presets) do
+        preset.name = preset.name or (getText("UI_PM_RandomizeTraits_Preset_DefaultName") .. " " .. slot)
+    end
+    return presets
+end
+
+function PM_savePresets(presets)
+    local writer = getFileWriter(PRESET_FILE, true, false)
+    for slot = 1, PM_PRESET_SLOTS do
+        local preset = presets[slot]
+        if preset then
+            writer:write("name|" .. slot .. "|" .. preset.name .. "\r\n")
+            for traitID, setting in pairs(preset.traits) do
+                writer:write("trait|" .. slot .. "|" .. traitID .. "|" .. setting .. "\r\n")
+            end
+        end
+    end
+    writer:close()
+end
+
 -- Build options inside OnGameBoot (trait labels and translations are ready here;
 -- saved values are restored afterwards, see OnMainMenuEnter below)
 Events.OnGameBoot.Add(function()
@@ -33,8 +86,118 @@ Events.OnGameBoot.Add(function()
     options:addTickBox("AutoReRandomize", getText("UI_PM_RandomizeTraits_Options_AutoReRandomize"), true,
         getText("UI_PM_RandomizeTraits_Options_AutoReRandomize_ToolTip"))
 
-    -- Collect selectable traits (free traits are profession-only and never shown at character creation)
+    -- Filled below with the selectable traits; the buttons use it when clicked
     local traitInfos = {}
+
+    -- Change a trait combobox on the open options screen.
+    -- Only the UI element is changed, so Apply saves it and Cancel discards it
+    -- (option:setValue would change the stored value right away, even on Cancel)
+    local function selectOnScreen(info, index)
+        local element = options:getOption(info.optionID).element
+        if element and element.selected ~= index then
+            element.selected = index
+            -- Notify the options screen like a player selection does, so Apply gets enabled
+            if element.onChange then
+                local args = element.onChangeArgs or {}
+                element.onChange(element.target, element, args[1], args[2])
+            end
+        end
+    end
+
+    -- Current on-screen value of a trait combobox (saved value if the screen is not open)
+    local function getOnScreen(info)
+        local option = options:getOption(info.optionID)
+        return option.element and option.element.selected or option:getValue()
+    end
+
+    options:addButton("ResetAllNormal", getText("UI_PM_RandomizeTraits_Options_ResetAllNormal"),
+        getText("UI_PM_RandomizeTraits_Options_ResetAllNormal_ToolTip"), function()
+            for _, info in ipairs(traitInfos) do
+                selectOnScreen(info, 1)
+            end
+        end)
+
+    -- Presets: save/load the trait settings to slots in a file
+    local presets = PM_loadPresets()
+
+    local function slotLabel(slot)
+        local preset = presets[slot]
+        return slot .. ": " .. (preset and preset.name or getText("UI_PM_RandomizeTraits_Preset_Empty"))
+    end
+
+    options:addSeparator()
+    options:addTitle(getText("UI_PM_RandomizeTraits_Title_Presets"))
+    local slotCombo = options:addComboBox("PresetSlot", getText("UI_PM_RandomizeTraits_Options_PresetSlot"),
+        getText("UI_PM_RandomizeTraits_Options_PresetSlot_ToolTip"))
+    for slot = 1, PM_PRESET_SLOTS do
+        slotCombo:addItem(slotLabel(slot), slot == 1)
+    end
+    local nameEntry = options:addTextEntry("PresetName", getText("UI_PM_RandomizeTraits_Options_PresetName"), "",
+        getText("UI_PM_RandomizeTraits_Options_PresetName_ToolTip"))
+
+    local function getSelectedSlot()
+        return slotCombo.element and slotCombo.element.selected or slotCombo:getValue()
+    end
+
+    -- Selecting a slot loads its trait settings onto the screen (Apply saves them, Cancel discards them).
+    -- An empty slot keeps the screen as is, so the current settings can be saved into it.
+    -- The name entry shows the slot's name, so saving does not reuse another slot's name
+    slotCombo.onChange = function(self)
+        local preset = presets[getSelectedSlot()]
+        if preset then
+            for _, info in ipairs(traitInfos) do
+                local setting = preset.traits[info.id] or "Normal"
+                for index, value in ipairs(SETTING_VALUES) do
+                    if value == setting then
+                        selectOnScreen(info, index)
+                    end
+                end
+            end
+        end
+        if nameEntry.element then
+            nameEntry.element:setText(preset and preset.name or "")
+        end
+    end
+
+    -- Refresh the slot names (they are code-defined, so update both the option and the open screen)
+    local function refreshSlotLabels()
+        for slot = 1, PM_PRESET_SLOTS do
+            slotCombo.values[slot] = slotLabel(slot)
+        end
+        local element = slotCombo.element
+        if element then
+            local selected = element.selected
+            element:clear()
+            for slot = 1, PM_PRESET_SLOTS do
+                element:addOption(slotCombo.values[slot])
+            end
+            element.selected = selected
+        end
+    end
+
+    options:addButton("PresetSave", getText("UI_PM_RandomizeTraits_Options_PresetSave"),
+        getText("UI_PM_RandomizeTraits_Options_PresetSave_ToolTip"), function()
+            local slot = getSelectedSlot()
+            local name = nameEntry.element and nameEntry.element:getText() or nameEntry:getValue() or ""
+            name = name:gsub("[|\r\n]", " "):match("^%s*(.-)%s*$")
+            if name == "" then
+                name = getText("UI_PM_RandomizeTraits_Preset_DefaultName") .. " " .. slot
+            end
+
+            -- Only non-Normal settings are stored; missing traits load as Normal
+            local traits = {}
+            for _, info in ipairs(traitInfos) do
+                local setting = SETTING_VALUES[getOnScreen(info)]
+                if setting and setting ~= "Normal" then
+                    traits[info.id] = setting
+                end
+            end
+            presets[slot] = { name = name, traits = traits }
+            PM_savePresets(presets)
+            refreshSlotLabels()
+        end)
+
+    -- Collect selectable traits (free traits are profession-only and never shown at character creation)
     local goodTraits = {}
     local badTraits = {}
     local labelCount = {}
