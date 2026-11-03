@@ -219,6 +219,21 @@ function CharacterCreationProfession:onSelectProf(profDef)
     end
 end
 
+-- [4] Loading a saved character build (the game's own presets) also selects its profession.
+-- Keep the build's traits: AutoReRandomize should only react to a manual profession change
+local PM_original_loadBuild = CharacterCreationProfession.loadBuild
+if PM_original_loadBuild then
+    function CharacterCreationProfession:loadBuild(box)
+        local wasRandomizing = PM_isRandomizing
+        PM_isRandomizing = true
+        local ok, err = pcall(PM_original_loadBuild, self, box)
+        PM_isRandomizing = wasRandomizing
+        if not ok then
+            error(err)
+        end
+    end
+end
+
 -- Print all available trait IDs to console (for discovering new trait IDs)
 function PM_PrintAllTraitIDs()
     local allTraits = CharacterTraitDefinition.getTraits()

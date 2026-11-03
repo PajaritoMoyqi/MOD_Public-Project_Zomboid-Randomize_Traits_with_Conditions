@@ -81,8 +81,16 @@ if ModOptions and ModOptions.getInstance then
     -- Expose applySettings so it can be called before randomizing
     PM_RandomizeTraits.applySettings = applySettings
 
-    -- Apply saved settings immediately (OPTIONS was updated by loadFile)
     applySettings()
+
+    -- ModOptions loads the saved values only when the options screen opens or on OnGameStart
+    -- (after character creation), so load them when the main menu appears
+    Events.OnMainMenuEnter.Add(function()
+      if ModOptions.loadFile then
+        ModOptions:loadFile()
+      end
+      applySettings()
+    end)
 
     -- Also apply on map load
     Events.OnPreMapLoad.Add(applySettings)
