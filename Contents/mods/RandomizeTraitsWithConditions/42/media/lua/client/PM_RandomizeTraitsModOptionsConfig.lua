@@ -24,7 +24,7 @@ local SETTING_VALUES = { "Normal", "Exclude", "Preselect" }
 -- Presets are stored in Zomboid/Lua/ (same folder as ModOptions.ini), one line each:
 --   name|<slot>|<preset name>
 --   trait|<slot>|<trait ID>|<Exclude or Preselect>
-PM_PRESET_SLOTS = 5
+PM_PRESET_SLOTS = 10
 local PRESET_FILE = "PM_RandomizeTraits_Presets.txt"
 
 -- Returns { [slot] = { name = string, traits = { [traitID] = setting } } }, empty slots are nil

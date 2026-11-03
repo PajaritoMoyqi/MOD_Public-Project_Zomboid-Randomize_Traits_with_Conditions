@@ -24,6 +24,15 @@ In Build 42, if two traits share the same name, the source of the trait is shown
 
 In Build 42, profession-only traits are not listed in the settings, since they cannot be chosen on the character creation screen.
 
+In Build 42, there are two more features above the trait settings.
+
+- 'Reset All Traits to Normal' sets every trait setting back to Normal. Like any other change in the options, press Apply or Accept to save it, or Cancel to discard it.
+- 'Presets' let you save your trait settings into 10 slots and switch between them. The three checkboxes are not included in presets.
+  - Choosing a saved slot in 'Preset Slot' loads its trait settings right away (press Apply or Accept to use them). Choosing an empty slot keeps the current settings.
+  - Enter a name in 'Preset Name' and press 'Save Trait Settings to Slot' to save the current trait settings into the selected slot. The slot is overwritten immediately. If the name is empty, a default name is used.
+  - When you move from the current preset to an empty slot, the current preset's settings are carried over. To make a new preset from scratch, choose an empty slot and press 'Reset All Traits to Normal'.
+  - Presets are saved in 'Zomboid/Lua/PM_RandomizeTraits_Presets.txt'.
+
 ### Special notes
 
 If you Preselect two traits that cannot be held together, only positive traits will ever be selected (e.g., 'Brave' and 'Cowardly'). Please also note that if both traits are positive but incompatible ('Strong' and 'Stout') or both are negative but incompatible ('Unfit' and 'Out of Shape'), only one will be automatically selected based on their order in the trait array.
@@ -107,6 +116,15 @@ Mod ID: PM_RandomizeTraitsWithConditions<br>
 빌드 42에서는 두 가지 특성이 같은 이름을 가질 경우, 설정 화면에서 특성 이름 뒤에 해당 특성의 출처가 표시됩니다(예: 'More Traits Definitive Edition' 모드의 경우 'Tinkerer (toadtraits)').
 
 빌드 42에서는 직업 전용 특성이 캐릭터 생성 화면에서 선택할 수 없기 때문에 설정 목록에 표시되지 않습니다.
+
+빌드 42에서는 특성 설정 위에 두 가지 기능이 더 있습니다.
+
+- '모든 특성을 Normal로 초기화' 버튼은 모든 특성 설정을 Normal로 되돌립니다. 다른 옵션 변경과 마찬가지로 '적용' 또는 '확인'을 눌러야 저장되며, '취소'를 누르면 원래대로 돌아갑니다.
+- '프리셋'을 사용하면 특성 설정을 10개의 슬롯에 저장해 두고 번갈아 사용할 수 있습니다. 세 개의 체크박스는 프리셋에 포함되지 않습니다.
+  - '프리셋 슬롯'에서 저장된 슬롯을 고르면 그 슬롯의 특성 설정이 바로 불러와집니다('적용' 또는 '확인'을 눌러야 사용됩니다). 빈 슬롯을 고르면 현재 설정이 그대로 유지됩니다.
+  - '프리셋 이름'에 이름을 입력하고 '특성 설정을 슬롯에 저장'을 누르면 현재 특성 설정이 선택한 슬롯에 저장됩니다. 슬롯은 바로 덮어써지며, 이름을 비워 두면 기본 이름이 붙습니다.
+  - 현재 프리셋에서 빈 슬롯으로 넘어가면 현재 프리셋의 내용이 인계됩니다. 처음부터 새 프리셋을 만들고 싶다면 빈 슬롯을 고르고 '모든 특성을 Normal로 초기화'를 누르세요.
+  - 프리셋은 'Zomboid/Lua/PM_RandomizeTraits_Presets.txt'에 저장됩니다.
 
 ### 특이사항
 
@@ -192,6 +210,15 @@ En la versión 42, si dos rasgos comparten el mismo nombre, la fuente del rasgo 
 
 En la versión 42, los rasgos exclusivos de profesiones no aparecen en la lista de configuraciones, ya que no se pueden seleccionar en la pantalla de creación de personajes.
 
+En la versión 42 hay dos funciones más encima de la configuración de rasgos.
+
+- 'Restablecer todos los rasgos a Normal' devuelve la configuración de todos los rasgos a Normal. Como cualquier otro cambio en las opciones, pulsa Aplicar o Aceptar para guardarlo, o Cancelar para descartarlo.
+- 'Preajustes' te permite guardar la configuración de rasgos en 10 ranuras y alternar entre ellas. Las tres casillas no se incluyen en los preajustes.
+  - Al elegir una ranura guardada en 'Ranura de preajuste', su configuración de rasgos se carga al instante (pulsa Aplicar o Aceptar para usarla). Al elegir una ranura vacía, se mantiene la configuración actual.
+  - Escribe un nombre en 'Nombre del preajuste' y pulsa 'Guardar rasgos en la ranura' para guardar la configuración actual en la ranura seleccionada. La ranura se sobrescribe al instante. Si el nombre está vacío, se usa un nombre por defecto.
+  - Al pasar del preajuste actual a una ranura vacía, se conserva la configuración del preajuste actual. Para crear un preajuste nuevo desde cero, elige una ranura vacía y pulsa 'Restablecer todos los rasgos a Normal'.
+  - Los preajustes se guardan en 'Zomboid/Lua/PM_RandomizeTraits_Presets.txt'.
+
 ### Notas especiales
 
 Si preseleccionas dos rasgos que no pueden combinarse, solo se seleccionarán los rasgos positivos (por ejemplo, «Valiente» y «Cobarde»). Ten en cuenta también que si ambos rasgos son positivos pero incompatibles («Fuerte» y «Robusto») o ambos son negativos pero incompatibles («En mala forma» y «Fuera de forma»), solo se seleccionará uno automáticamente en función de su orden en la matriz de rasgos.
@@ -275,6 +302,15 @@ Mod ID: PM_RandomizeTraitsWithConditions<br>
 ビルド42では、2つの特性が同じ名前を持つ場合、設定画面では名前の後にその特性の出典が表示されます（例：「More Traits Definitive Edition」モードの場合は「Tinkerer (toadtraits)」）。
 
 Build 42 では、職業限定の特性はキャラクター作成画面で選択できないため、設定画面には表示されません。
+
+Build 42 では、特性設定の上にさらに2つの機能があります。
+
+- 「すべての特性をNormalにリセット」ボタンは、すべての特性設定をNormalに戻します。他のオプション変更と同じく、「適用」または「OK」を押すと保存され、「キャンセル」を押すと元に戻ります。
+- 「プリセット」を使うと、特性設定を10個のスロットに保存して切り替えられます。3つのチェックボックスはプリセットに含まれません。
+  - 「プリセットスロット」で保存済みのスロットを選ぶと、その特性設定がすぐに読み込まれます(使うには「適用」または「OK」を押してください)。空のスロットを選ぶと、現在の設定がそのまま残ります。
+  - 「プリセット名」に名前を入力して「特性設定をスロットに保存」を押すと、現在の特性設定が選択したスロットに保存されます。スロットはすぐに上書きされます。名前が空欄の場合は既定の名前が付きます。
+  - 現在のプリセットから空のスロットに移ると、現在のプリセットの内容が引き継がれます。一から新しいプリセットを作るには、空のスロットを選んで「すべての特性をNormalにリセット」を押してください。
+  - プリセットは「Zomboid/Lua/PM_RandomizeTraits_Presets.txt」に保存されます。
 
 ### 特記事項
 
